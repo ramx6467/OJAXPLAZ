@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: var(--spotify-black);
+  --color-white: var(--spotify-white);
+  --color-spotify-green: var(--spotify-green);
+  --color-spotify-black: var(--spotify-black);
+  --color-spotify-base: var(--spotify-base);
+  --color-spotify-elevated: var(--spotify-elevated);
+  --color-spotify-highlight: var(--spotify-highlight);
+  --color-spotify-text: var(--spotify-text);
+  --color-spotify-white: var(--spotify-white);
+  --color-brand-primary: var(--brand-primary);
+}
+
+:root {
+  /* Legacy Custom Variables */
+  --spotify-green: #1DB954;
+  --spotify-black: #191414;
+  --spotify-base: #121212;
+  --spotify-elevated: #242424;
+  --spotify-highlight: #282828;
+  --spotify-text: #b3b3b3;
+  --spotify-white: #ffffff;
+  --brand-primary: #ff2d55;
+  
+  /* Tailwind v4 Utility Variables */
+  --color-black: #191414;
+  --color-white: #ffffff;
+  --color-spotify-green: #1DB954;
+  --color-spotify-black: #191414;
+  --color-spotify-base: #121212;
+  --color-spotify-elevated: #242424;
+  --color-spotify-highlight: #282828;
+  --color-spotify-text: #b3b3b3;
+  --color-spotify-white: #ffffff;
+  --color-brand-primary: #ff2d55;
+}
+
+body.light-theme {
+  /* Legacy Custom Variables */
+  --spotify-green: #1DB954;
+  --spotify-black: #ffffff;
+  --spotify-base: #f5f5f5;
+  --spotify-elevated: #ffffff;
+  --spotify-highlight: #e5e5e5;
+  --spotify-text: #555555;
+  --spotify-white: #121212;
+  --brand-primary: #ff2d55;
+
+  /* Tailwind v4 Utility Variables */
+  --color-black: #ffffff;
+  --color-white: #121212;
+  --color-spotify-green: #1DB954;
+  --color-spotify-black: #ffffff;
+  --color-spotify-base: #f5f5f5;
+  --color-spotify-elevated: #ffffff;
+  --color-spotify-highlight: #e5e5e5;
+  --color-spotify-text: #555555;
+  --color-spotify-white: #121212;
+  --color-brand-primary: #ff2d55;
+}
+
+@layer base {
+  body {
+    @apply bg-spotify-base text-spotify-white font-sans antialiased overflow-hidden transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-spotify-elevated/80 backdrop-blur-md border border-white/5;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
