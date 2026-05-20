@@ -32,7 +32,7 @@ function App() {
         <AuthProvider>
           <LibraryProvider>
           <PlayerProvider>
-            <Router>
+            <Router basename={import.meta.env.BASE_URL}>
               <Routes>
                 <Route path="/auth" element={<Auth />} />
                 
