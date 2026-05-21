@@ -16,6 +16,7 @@ import { PreferencesProvider } from './context/PreferencesContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { LibraryProvider } from './context/LibraryContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ProtectedRoute, PublicRoute } from './components/ProtectedRoute';
 
 const DummyPage = ({ title }) => (
   <div className="flex items-center justify-center h-full text-spotify-white text-2xl font-bold">
@@ -34,9 +35,25 @@ function App() {
           <PlayerProvider>
             <Router basename={import.meta.env.BASE_URL}>
               <Routes>
-                <Route path="/auth" element={<Auth />} />
+                {/* Auth route only accessible to non-logged in users */}
+                <Route 
+                  path="/auth" 
+                  element={
+                    <PublicRoute>
+                      <Auth />
+                    </PublicRoute>
+                  } 
+                />
                 
-                <Route path="/" element={<Layout />}>
+                {/* Application routes only accessible to logged in users */}
+                <Route 
+                  path="/" 
+                  element={
+                    <ProtectedRoute>
+                      <Layout />
+                    </ProtectedRoute>
+                  }
+                >
                   <Route index element={<Home />} />
                   <Route path="search" element={<Search />} />
                   <Route path="library" element={<Library />} />
@@ -61,3 +78,4 @@ function App() {
 }
 
 export default App;
+
